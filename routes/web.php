@@ -16,3 +16,38 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get(
+    '/todos',
+    [\App\Http\Controllers\TodosController::class, 'index']
+)->name('todos.index');
+
+Route::get(
+    '/todos/create',
+    [\App\Http\Controllers\TodosController::class, 'create']
+)->name('todos.create');
+
+Route::post(
+    '/todos',
+    [\App\Http\Controllers\TodosController::class, 'store']
+)->name('todos.store');
+
+Route::get(
+    '/todos/{todos}',
+    [\App\Http\Controllers\TodosController::class, 'show']
+)->name('todos.show');
+
+Route::get(
+    '/todos/{todos}/edit',
+    [\App\Http\Controllers\TodosController::class, 'edit']
+)->name('todos.edit');
+
+Route::patch(
+    '/todos/{todos}',
+    [\App\Http\Controllers\TodosController::class, 'update']
+)->name('todos.update');
+
+Route::delete(
+    '/todos/{todos}',
+    [\App\Http\Controllers\TodosController::class, 'destroy']
+)->name('todos.destroy');
